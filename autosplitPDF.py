@@ -11,6 +11,7 @@ import logging
 import PyPDF2
 import qrtools
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s,%(msecs)03d %(levelname)-5.5s [%(name)s] %(message)s')
 log = logging.getLogger(__name__)
 
 
@@ -41,7 +42,7 @@ def autoSplitPDF(filename, ghostScriptExecutable):
     pngFiles = os.path.join(temporaryDirectory, 'pages-%03d.png')
     inputFile = os.path.abspath(filename)
     outputDirectory = os.path.dirname(filename)
-    log.debug('Call ghostscript to split PDF into pages and export as PNG')
+    log.debug('Call ghostscript to split PDF (%s) into pages and export as PNG (%s)', inputFile, pngFiles)
     subprocess.check_call([ghostScriptExecutable, '-dBATCH', '-dNOPAUSE', '-sDEVICE=pnggray', '-r300', '-dUseCropBox', '-sOutputFile=%s' % pngFiles, inputFile])
     log.debug('Opening %s as source PDF', inputFile)
     with open(inputFile, 'rb') as sourcePDF:
