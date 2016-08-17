@@ -1,5 +1,5 @@
 # autosplitPDF
-Split pdf files using separator pages, e.g. when after scanning them with a MFD
+Split pdf files using separator pages, e.g. when after scanning them with a MFD.
 
 ```
 usage: autosplitPDF.py [-h] [-v | -q] [-d] [-g] filename
@@ -18,3 +18,10 @@ optional arguments:
 
 Process finished with exit code 0
 ```
+
+You need to install at least the following Python packages
+
+  * pip install pypdf2
+  * zbar (depends on your platform where to get it)
+  * pip install qrtools
+  * pip install pillow
