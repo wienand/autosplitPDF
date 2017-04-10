@@ -63,6 +63,14 @@ def autoSplitPDF(filename, ghostScriptExecutable):
         shutil.rmtree(temporaryDirectory)
 
 
+def generateQR():
+    import pyqrcode
+    qr = pyqrcode.create("SEPARATOR SHEET - Tax Assessment")
+    qr.png("separator - tax assessment.png", scale=6)
+    qr = pyqrcode.create("SEPARATOR SHEET - Message from tax authorities")
+    qr.png("separator - message.png", scale=6)
+
+
 if __name__ == '__main__':
     args = parseCommandLine()
     if args.verbose:
